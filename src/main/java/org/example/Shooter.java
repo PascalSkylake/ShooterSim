@@ -7,6 +7,7 @@ import edu.wpi.first.math.numbers.N4;
 import edu.wpi.first.math.numbers.N5;
 
 import java.awt.*;
+import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.function.Function;
@@ -114,6 +115,10 @@ public class Shooter {
 
     public double timeFromDistance(double x) {
         return 0.0531 + (0.0102 * x) + (0.0187 * x * x) + (-4.98E-03 * x * x * x) + (8.07E-04 * x * x * x * x) + (-6.93E-05 * x * x * x * x * x) + (2.43E-06 * x * x * x * x * x * x);
+    }
+
+    public double thetaFromDistance2(double x) {
+        return 1.38 + (-0.674 * x) + (0.179 * x * x) + (-0.0227 * x * x * x) + (1.09E-03 * x * x * x * x);
     }
 
 }

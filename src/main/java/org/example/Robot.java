@@ -35,10 +35,12 @@ public class Robot extends Entity {
             this.x = Mouse.x;
         }
 
+
+
         robotPose = ((x + width / 2) / 100);
         distance = 8 - robotPose;
 
-        shooterTheta = shooter.thetaFromDistance(distance);
+        shooterTheta = shooter.thetaFromDistance2(distance);
         shooterExit = shooter.shooterExitRobotRelative(shooterTheta);
         trajectoryTime = shooter.timeFromDistance(distance);
 
@@ -49,19 +51,27 @@ public class Robot extends Entity {
 
     @Override
     public void draw(Graphics2D g) {
-        Rectangle2D rect = new Rectangle2D.Double(x, y, width, height);
+        Rectangle2D rect = new Rectangle2D.Double(x, y - height, width, height);
         g.setColor(Color.white);
         g.draw(rect);
 
         g.setColor(Color.green);
-        g.draw(new Line2D.Double(0, y - 198, 2000, y - 198));
-        g.drawLine(800, 0, 800, 1000);
-        //g.drawLine(0, 800, 1000, 800);
+        g.draw(new Line2D.Double(790, y - 205, 810, y - 205));
+        g.drawLine(800, (int) y - 205 - 10, 800, (int) y - 205 + 10);
+
+        // draw speaker
+        // g.drawLine(800 + 23, (int)y - 198, 800 - 23, (int)y - 211);
+        g.drawLine(800 - 23, (int) y - 211, 800 - 23, (int) y - 211 - 17);
+        g.drawLine(800 - 23 + 122, (int) y - 198, 800 - 23 + 122, (int) y - 198 - 35);
+        g.drawLine(800 - 23 + 122, (int) y - 198 - 35, 800 - 23 + 122 - 65,(int) y - 198 - 35 - 19);
+        g.drawLine(800 - 23, (int) y - 211 - 17, 800 - 23 + 122 - 65,(int) y - 198 - 35 - 19);
+        g.drawLine(800 - 23 + 122, (int) y - 198, 800 + 23, (int) y - 198);
 
         g.setColor(Color.WHITE);
         g.draw(new Line2D.Double((x + width / 2) + SHOOTER_PIVOT_ROBOT_REL.getX() * 100, y - SHOOTER_PIVOT_ROBOT_REL.getY() * 100, (x + width / 2) + (shooterExit.getX() * 100), y - (shooterExit.getY() * 100)));
 
-        g.setColor(Color.blue);
+        g.setColor(Color.ORANGE);
+
 
         ArrayList<Point> trajectoryScreenPoints = new ArrayList<>();
         for (Vector v : trajectory) {
@@ -75,10 +85,13 @@ public class Robot extends Entity {
             Point prev = trajectoryScreenPoints.get(0);
             for (Point p : trajectoryScreenPoints) {
                 g.drawLine(prev.x, prev.y, p.x, p.y);
+                g.drawLine(prev.x, prev.y + 5, p.x, p.y + 5);
+                g.drawLine(prev.x, prev.y - 5, p.x, p.y - 5);
                 prev = p;
             }
         }
 
+        g.setColor(Color.WHITE);
         g.drawString("RobotX     " + robotPose, 10, 40);
         g.drawString("Distance   " + (800 - (x + width / 2) + (shooterExit.getX() * 100)) / 100, 10, 50);
         g.drawString("Theta        " + shooterTheta, 10, 60);
