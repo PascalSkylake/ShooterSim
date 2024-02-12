@@ -2,6 +2,7 @@ package org.example;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 
 public class EntityHandler {
     static ArrayList<Entity> entities = new ArrayList<>();
@@ -23,12 +24,16 @@ public class EntityHandler {
     }
 
     public static void draw(Graphics2D g) {
-        for (Entity entity : entities) {
-            entity.draw(g);
-            if (displayHitbox) {
-                g.setColor(Color.GREEN);
-                g.drawRect((int)entity.x, (int)entity.y, (int)entity.width, (int)entity.height);
+        try {
+            for (Entity entity : entities) {
+                entity.draw(g);
+                if (displayHitbox) {
+                    g.setColor(Color.GREEN);
+                    g.drawRect((int) entity.x, (int) entity.y, (int) entity.width, (int) entity.height);
+                }
             }
+        } catch (ConcurrentModificationException e) {
+            System.out.println("EXCEPTION IN DRAW THREAD");
         }
     }
 

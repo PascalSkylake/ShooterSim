@@ -28,7 +28,7 @@ public class Key extends KeyAdapter {
             currentlyPressed.put(key, false);
             return false;
         } else if (currentlyPressed.get(key)){
-            System.out.println("pressed key" + (char) key);
+            //System.out.println("pressed key" + (char) key);
             return currentlyPressed.get(key);
         } else {
             return false;
