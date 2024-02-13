@@ -28,19 +28,6 @@ public class Shooter {
     private final Translation2d SHOOTER_PIVOT_ROBOT_REL = new Translation2d(-0.2757, 0.5972);
 
     public Shooter() {
-
-//        projectileEquation = (Vector<N6> x) -> {
-//            double vx = x.get(2, 0);
-//            double vy = x.get(3, 0);
-//            double v = Math.sqrt((vx * vx) + (vy * vy));
-//            double ax = -MU * vx * v;
-//            double ay = -9.8 - (MU * vy * v);
-//
-//            Vector<N6> out = VecBuilder.fill(vx, vy, ax, ay, 0, 0);
-//
-//            return out;
-//        };
-
         projectileEquation3d = (double[] x) -> {
             double vx = x[3];
             double vy = x[4];
@@ -63,7 +50,7 @@ public class Shooter {
         double[] k_4 = f.apply(addVectors(x, multiplyByScalar(k_3, h)));
 
         double[] out = addVectors(multiplyByScalar(addVectors(addVectors(addVectors(k_1, multiplyByScalar(k_2, 2)), multiplyByScalar(k_3, 2)), k_4), h / 6), x);
-        out[x.length - 3] += h;
+        out[x.length - 2] += h;
         return out;
     }
 
