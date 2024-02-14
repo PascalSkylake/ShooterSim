@@ -10,7 +10,7 @@ public class Simulator {
     boolean running;
     public final Window window;
     Color background;
-    private final int tickRate = 60;
+    private final int tickRate = 100;
 
     public Simulator(String title, boolean fullscreen) {
         window = new Window(title, fullscreen);
