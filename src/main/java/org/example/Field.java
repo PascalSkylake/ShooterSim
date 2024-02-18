@@ -80,10 +80,4 @@ public class Field extends Entity {
     public static double screenYtoField(double y) {
         return (y - Simulator.frame.getHeight() + 150) / -100.0;
     }
-    public static int[] fieldToScreen(double[] in) {
-        int screenX = 10 + (int) (in[0] * 100);
-        int screenY = Simulator.frame.getHeight() - 10 - (int) (in[1] * 100);
-
-        return new int[] {screenX, screenY};
-    }
 }

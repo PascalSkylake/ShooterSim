@@ -87,7 +87,6 @@ public class Robot extends Entity {
         Pose2d pose = new Pose2d(x, y, new Rotation2d(optimal[1]));
         shooterPoseRobotRelative = shooterExitRobotRelative(optimal[0]);
         shooterPose = shooterExitFieldRelative(pose, shooterPoseRobotRelative);
-        //System.out.println(shooterPose);
 
         double[] in = {shooterPose.getX(), shooterPose.getY(), shooterPose.getZ(),
                 vX + (v0 * Math.sin(Math.PI / 2 - optimal[0]) * Math.cos(optimal[1])),
