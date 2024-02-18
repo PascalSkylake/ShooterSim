@@ -24,7 +24,6 @@ import org.example.Main;
 public class Shooter {
     static Function<double[], double[]> projectileEquation3d;
 
-    private final double SPEAKER_HEIGHT = 1.9812;
     private final double DRAG_COEFFICIENT = 0.5;
     private final double AIR_DENSITY = 1.225;
     private final double CROSS_SECTIONAL_AREA = 0.018;

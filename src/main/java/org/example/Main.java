@@ -26,5 +26,9 @@ public class Main {
         sim.createMouseListener();
         EntityHandler.addEntity(field);
         EntityHandler.addEntity(robot);
+
+        double x = v0 * Math.sin(1) * Math.cos(1);
+        double y = v0 * Math.sin(1) * Math.sin(1);
+        double z = v0 * Math.sin(1);
     }
 }

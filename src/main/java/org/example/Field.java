@@ -1,9 +1,7 @@
 package org.example;
 
-import org.example.math.Shooter;
 
 import java.awt.*;
-import java.awt.geom.Rectangle2D;
 
 public class Field extends Entity {
     public static double targetX = 0.4572 / 2, targetY = 8.001 - 2.063394 - (1.05 / 2), targetZ = 2.05;
@@ -14,9 +12,6 @@ public class Field extends Entity {
 
     @Override
     public void draw(Graphics2D g) {
-        int[] fieldZero = fieldToScreen(new double[] {0, 0});
-        int[] fieldCoords = fieldToScreen(new double[] {16.5354, 8.001});
-
         g.setColor(Color.WHITE);
         // top left to top right
         g.drawLine(fixX(0), fixY(8.001), fixX(16.5354), fixY(8.001));
@@ -60,6 +55,14 @@ public class Field extends Entity {
         g.setColor(Color.GREEN);
         g.drawLine(fixX(16.5354 - 0.4572 / 2), fixY(8.001 - 2.063394 - (1.05 / 2) - 0.05), fixX(16.5354 - 0.4572 / 2), fixY(8.001 - 2.063394 - (1.05 / 2) + 0.05));
         g.drawLine(fixX(16.5354 - (0.4572 / 2 - 0.05)), fixY(8.001 - 2.063394 - (1.05 / 2)), fixX(16.5354 - (0.4572 / 2 + 0.05)), fixY(8.001 - 2.063394 - (1.05 / 2)));
+
+        g.setColor(Color.WHITE);
+        g.drawLine(1800 - 14, 200 - 83, 1800 - 14, 200 - 83 - 7);
+        g.drawLine(1800 - 14, 200 - 83 - 7, 1800 - 14 + 23, 200 - 83 - 7 - 8);
+        g.drawLine(1800 - 14 + 23, 200 - 83 - 7 - 8, 1800 - 14 + 23 + 18, 200 - 83 - 7 - 8);
+        g.drawLine(1800 - 14 + 23 + 18, 200 - 83 - 7 - 8, 1800 - 14 + 23 + 18 + 8, 200 - 83 - 7 - 8 + 8);
+        g.drawLine(1800 - 14 + 23 + 18 + 8, 200 - 83 - 7 - 8 + 8, 1800 - 14 + 23 + 18 + 8, 200 - 83 - 7 - 8 + 8 + 14);
+        g.drawLine(1800 - 14 + 23 + 18 + 8, 200 - 83 - 7 - 8 + 8 + 14, 1800 - 14 + 23 + 18 + 8 - 21, 200 - 83 - 7 - 8 + 8 + 14);
     }
 
     public static int fixX(double x) {
